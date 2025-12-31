@@ -1,0 +1,104 @@
+ <!DOCTYPE html>
+<html>
+<head>
+  <title>Happy New Year NEHAHHH 💗</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(circle at top, #1a1a2e, #000);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      overflow: hidden;
+    }
+    .card {
+      padding: 25px;
+      max-width: 90%;
+      animation: fadeIn 2s ease;
+    }
+    h1 {
+      font-size: 2.2rem;
+    }
+    .gift {
+      font-size: 70px;
+      margin: 25px;
+      cursor: pointer;
+      animation: bounce 1.5s infinite;
+    }
+    .firework, .petal {
+      position: absolute;
+      pointer-events: none;
+    }
+    .firework {
+      width: 6px;
+      height: 6px;
+      background: gold;
+      border-radius: 50%;
+      animation: explode 1s forwards;
+    }
+    .petal {
+      font-size: 22px;
+      animation: fall 6s linear forwards;
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+    @keyframes explode {
+      to { transform: scale(25); opacity: 0; }
+    }
+    @keyframes fall {
+      from { transform: translateY(-10vh); }
+      to { transform: translateY(110vh); opacity: 0; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <h1>✨ Happy New Year NEHAHHH!! 💗 ✨</h1>
+  <p id="text">Tap the gift… I made this just for you 🥹</p>
+  <div class="gift" onclick="openSurprise()">🎁</div>
+
+  <audio id="song">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_5c39f1c42a.mp3">
+  </audio>
+</div>
+
+<script>
+function openSurprise() {
+  document.getElementById("text").innerHTML =
+    "You are my favorite part of every year 💖🎆";
+  document.getElementById("song").play();
+
+  for (let i = 0; i < 25; i++) {
+    let f = document.createElement("div");
+    f.className = "firework";
+    f.style.left = Math.random()*100 + "vw";
+    f.style.top = Math.random()*60 + "vh";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1000);
+  }
+
+  for (let i = 0; i < 30; i++) {
+    let p = document.createElement("div");
+    p.className = "petal";
+    p.innerHTML = "🌸";
+    p.style.left = Math.random()*100 + "vw";
+    document.body.appendChild(p);
+    setTimeout(()=>p.remove(),6000);
+  }
+}
+</script>
+
+</body>
+</html>
